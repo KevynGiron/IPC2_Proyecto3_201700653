@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link href="styles.css" rel="stylesheet" type="text/css">
+	<link href="/static/styles.css" rel="stylesheet" type="text/css">
 	<title>El frontednd de la app</title>
 </head>
+{% block content %}
+
 <body>
-	<div id = "header">
-		<ul class = "nav">
-			<li><a href="">Cargar Archivos</a></li>
+	<div id="header">
+		<ul class="nav">
+			<li><a href="abrir_archivo()" id="cargar" type="file">Cargar Archivos</a></li>
 
 			<li><a href="">Peticiones</a>
 				<ul>
@@ -16,7 +19,7 @@
 					<li><a href="">Filtrar por fehca y codigo de error</a></li>
 				</ul>
 			</li>
-			
+
 
 			<li><a href="">Ayuda</a>
 				<ul>
@@ -26,16 +29,33 @@
 			</li>
 		</ul>
 	</div>
-	<!--Botones-->
+	<!--Botones--
 	<div id = "botones">
 		<BUTTON id = "enviar" >Enviar</BUTTON>
 		<BUTTON id = "reset" >Reset</BUTTON>
 	</div>
-	<!--Textarea-->
-	<div id = "area_texto">
-		<Textarea id = "entrada" rows = "20" cols = "50"></textarea>
-		<Textarea id = "salida" rows = "20" cols = "50"></textarea>
+	Textarea-->
+
+
+	<div id="botones">
+		<form action="#" method="post">
+			<BUTTON id="enviar">Enviar</BUTTON>
+		</form>
+		<BUTTON id="reset">Reset</BUTTON>
 	</div>
-	
+
+	<div id="area_texto">
+		<Textarea id="entrada" rows="20" cols="50"></textarea>
+		<Textarea id="salida" rows="20" cols="50"></textarea>
+	</div>
+
+	<script>
+		function abrir_archivo(evento) {
+			return "hola";
+		}
+	</script>
+
 </body>
+{% endblock %}
+
 </html>
