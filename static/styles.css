@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  width: 800px;
+  width: 1000px;
   margin: 0 auto;
   background-color: #F4F4F4;
   padding: 40px 40px 40px;
@@ -27,11 +27,8 @@ body {
 
 #reset {
 	position: relative;
-	left: 600px;
-}
-
-#area_texto {
-
+	left: 820px;
+	top: -20px;
 }
 
 #entrada {

@@ -2,19 +2,25 @@
 <html>
 
 <head>
-	<link href="/static/styles.css" rel="stylesheet" type="text/css">
+	<link href="/static/styles.css" rel="stylesheet" />
 	<title>El frontednd de la app</title>
 </head>
 {% block content %}
 
 <body>
+	<h1>{{txt3}}</h1>
 	<div id="header">
 		<ul class="nav">
-			<li><a href="abrir_archivo()" id="cargar" type="file">Cargar Archivos</a></li>
+			<li><input type="file" id="file-input" /></li>
 
 			<li><a href="">Peticiones</a>
 				<ul>
-					<li><a href="">Consultar Datos</a></li>
+					<li>
+						
+						<form method="post">
+							<BUTTON id="enviar">Enviar</BUTTON>
+						</form>
+					</li>
 					<li><a href="">Filtrar informacion por fecha y usuario que reporta</a></li>
 					<li><a href="">Filtrar por fehca y codigo de error</a></li>
 				</ul>
@@ -23,38 +29,46 @@
 
 			<li><a href="">Ayuda</a>
 				<ul>
-					<li><a href="">Informacion del estudiante</a></li>
-					<li><a href="">Documentacion</a></li>
+					<li><a href="/datos">Informacion del estudiante</a></li>
+					<li><a href="/reporte">Documentacion</a></li>
 				</ul>
 			</li>
 		</ul>
 	</div>
-	<!--Botones--
-	<div id = "botones">
-		<BUTTON id = "enviar" >Enviar</BUTTON>
-		<BUTTON id = "reset" >Reset</BUTTON>
-	</div>
-	Textarea-->
-
 
 	<div id="botones">
-		<form action="#" method="post">
+		<form method="post">
 			<BUTTON id="enviar">Enviar</BUTTON>
+			<Textarea id="entrada" rows="20" cols="50" name='u' readonly>{{txt1}}</textarea>
+			<Textarea id="salida" rows="20" cols="50" readonly>{{txt2}}</textarea>
 		</form>
-		<BUTTON id="reset">Reset</BUTTON>
-	</div>
-
-	<div id="area_texto">
-		<Textarea id="entrada" rows="20" cols="50"></textarea>
-		<Textarea id="salida" rows="20" cols="50"></textarea>
+		<form action="">
+			<BUTTON id="reset" onclick="templates/index.html">Reset</BUTTON>
+		</form>
 	</div>
 
 	<script>
-		function abrir_archivo(evento) {
-			return "hola";
+		function leerArchivo(e) {
+			var archivo = e.target.files[0];
+			if (!archivo) {
+				return;
+			}
+			var lector = new FileReader();
+			lector.onload = function (e) {
+				var contenido = e.target.result;
+				mostrarContenido(contenido);
+			};
+			lector.readAsText(archivo);
 		}
-	</script>
 
+		function mostrarContenido(contenido) {
+			var elemento = document.getElementById('entrada');
+			elemento.innerHTML = contenido;
+		}
+
+		document.getElementById('file-input')
+			.addEventListener('change', leerArchivo, false);
+	</script>
 </body>
 {% endblock %}
 
